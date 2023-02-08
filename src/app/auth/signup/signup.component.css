@@ -1,0 +1,23 @@
+.back-button-wrap {
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+.back-button-wrap button {
+    border: 0;
+    background: transparent;
+}
+.welcome-message h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 33px;
+    color: #0C1A30;
+}
+.welcome-message p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    color: #838589;
+}

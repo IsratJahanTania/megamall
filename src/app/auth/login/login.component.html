@@ -1,0 +1,45 @@
+<div class="page">
+    <div class="header">
+      <div class="back-button-wrap">
+        <button type="button">&lt;</button>
+      </div>
+    </div>
+    
+    <div class="welcome-message mt-5">
+      <h1>Welcome back to Mega Mall</h1>
+      <p>Silahkan masukan data untuk login</p>
+    </div>
+    
+    <form [formGroup]="form" (submit)="handleLoginFormSubmit()">
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input type="text" formControlName="emailAddress" id="email" placeholder="Email" class="form-control">
+        
+        <ng-container *ngIf="form.get('emailAddress')?.invalid && (form.get('emailAddress')?.dirty || form.get('emailAddress')?.touched)">
+          <div class="alert alert-danger mt-3" *ngIf="form.get('emailAddress')?.errors?.['required']">Email is required.</div>
+          <div class="alert alert-danger mt-3" *ngIf="form.get('emailAddress')?.errors?.['email']">Email is invalid.</div>
+          <div class="alert alert-danger mt-3" *ngIf="form.get('emailAddress')?.errors?.['minlength']">Email must not be less than 5 characters.</div>
+          <div class="alert alert-danger mt-3" *ngIf="form.get('emailAddress')?.errors?.['maxlength']">Email must not be more than 50 characters</div>
+        </ng-container>
+      </div>
+    
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input type="text" formControlName="userPassword" id="password" placeholder="Password" class="form-control">
+        <ng-container *ngIf="form.get('userPassword')?.invalid && (form.get('userPassword')?.dirty || form.get('userPassword')?.touched)">
+          <div class="alert alert-danger mt-3" *ngIf="form.get('userPassword')?.errors?.['required']">Password is required.</div>
+          <div class="alert alert-danger mt-3" *ngIf="form.get('userPassword')?.errors?.['minlength']">Password must not be less than 6 characters.</div>
+          <div class="alert alert-danger mt-3" *ngIf="form.get('userPassword')?.errors?.['maxlength']">Password must not be more than 50 characters</div>
+        </ng-container>
+      </div>
+       
+      <div class="form-group mb-3">
+        <button class="btn btn-primary w-100" type="submit" [disabled]="form.invalid">LOGIN</button>
+      </div>
+    </form>
+    
+    <div class="forgot-signup-link d-flex justify-content-between mt-5">
+      <a routerLink="/auth/reset-password" class="forgot-link">Forgot Password</a>
+      <a routerLink="/auth/signup" class="signup-link">Signup</a>
+    </div>  
+</div>
